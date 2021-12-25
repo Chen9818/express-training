@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<% layout("layout") %>   <!-- 載入layout -->
+    <%- title %>   <!-- 導入html參數 -->
+    <h2>gender: <%= gender %></h2> <!-- 導入參數 -->
+    <% if(show){ %>  <!-- 導入邏輯 show = true-->
+        <span>資料呈現</span>
+    <% } %>
+    <h2>skill:</h2>
+    <ul>           <!-- 導入for迴圈 -->
+        <% for(let i=0;skill.length>i;i++){ %>
+            <li><%= skill[i] %></li>
+        <% } %>
+    </ul>
     <img src='123.jpg'>
-</body>
-</html>

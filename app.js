@@ -25,7 +25,20 @@ app.get("/user/:name/", function (req, res) {
 
 app.get("/photo", function (req, res) {
     // res.send("<html><head></head><body><img src='123.jpg'></body></html>")  //載入靜態資料(圖片)
-    res.render("photo")   //利用ejs讀取html
+    res.render("photo", {
+        "title": "<h1>my name is Wei</h1>",   //將參數導入至photo.ejs
+        "gender": "man",
+        "show": true,
+        "skill": [
+            "html",
+            "css",
+            "js"
+        ]
+    })   //利用ejs讀取html
+})
+
+app.get("/index", function (req, res) {
+    res.render("index")
 })
 
 app.use(function (req, res) {
