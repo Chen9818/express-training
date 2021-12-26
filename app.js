@@ -9,6 +9,11 @@ app.engine("ejs", engine)
 app.set("views", "./views") //讀取views檔的ejs
 app.set("view engine", "ejs") //利用ejs讀取
 
+//取得表單資料
+let bodyParser = require("body-parser")
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
 //類似守門員的邏輯
 app.use(function (req, res, next) {
     console.log("有人進來了");
@@ -37,8 +42,21 @@ app.get("/photo", function (req, res) {
     })   //利用ejs讀取html
 })
 
-app.get("/index", function (req, res) {
-    res.render("index")
+app.get("/search", function (req, res) {
+    res.render("search")
+})
+
+app.get("/searchAJAX", function (req, res) {
+    res.render("searchAJAX")
+})
+
+app.post("/searchList", function (req, res) {
+    // console.log(req.body);    //回傳資料
+    res.redirect("search")    //轉址  再回到search，如果沒轉址網頁會一直轉圈
+})
+
+app.post("/searchAJAX", function (req, res) {    //和轉址不同，AJAX不會跳其他頁面，會在同一頁跑資料
+    // console.log(req.body)
 })
 
 app.use(function (req, res) {
