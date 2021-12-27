@@ -56,7 +56,8 @@ app.post("/searchList", function (req, res) {
 })
 
 app.post("/searchAJAX", function (req, res) {    //和轉址不同，AJAX不會跳其他頁面，會在同一頁跑資料
-    // console.log(req.body)
+    console.log(req.body.content)
+    res.send("hello")
 })
 
 app.use(function (req, res) {
